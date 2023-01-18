@@ -2,10 +2,22 @@
 //
 
 #include <iostream>
-
+#include <cmath>
+#include <iomanip>
+#include <iostream>
+using namespace std;
+bool initialTest();
 int main()
 {
-    std::cout << "Hello World!\n";
+    cout << "Starting\n";
+    if (initialTest() == true) {
+        cout << "Initial test passed\nInitiating satellite mainframe.";
+    }
+
+}
+bool initialTest() {
+    //Code to test all the hardware components.
+    return false;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
