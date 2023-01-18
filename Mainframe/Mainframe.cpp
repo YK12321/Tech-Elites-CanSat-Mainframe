@@ -7,26 +7,82 @@
 #include <iostream>
 using namespace std;
 bool initialTest();
+bool sensorsWorking();
+bool roverWorking();
+bool radioWorking();
+bool radioPacketTest();
+void detectLaunch();
+/*
+Program execution starts and begins here
+*/
 int main()
 {
     cout << "Starting\n";
     if (initialTest() == true) {
-        cout << "Initial test passed\nInitiating satellite mainframe.";
+        cout << "Initial test passed\n";
     }
-
+    else {
+        cout << "Something failed: ";
+        if (!sensorsWorking()) {
+            cout << "Sensors/sensor system failed.\n";
+        } if (!roverWorking()) {
+            cout << "Rover/rover system failed. (Blame YK)\n";
+        } if(!radioWorking()){
+            cout << "Radio transmitter failed.";
+        } if (!radioPacketTest()&&radioWorking()) {
+            cout << "Radio communication failed. No need to disassember the satellite (Likely a reciever fault/too far away)";
+        }
+    }
+    return 0;
 }
+/*
+Function to test all the hardware components.
+Returns true if everything is working.
+Returns if something(s) is(/are) not working.
+*/
 bool initialTest() {
-    //Code to test all the hardware components.
-    return false;
+    if (sensorsWorking()&&roverWorking()&&radioWorking()&&radioPacketTest()) {
+        return true;
+    }
+    else {
+        return false;
+    }
 }
+/*
+Function to test if all the
+sensors in the satellite are 
+working.
+*/
+bool sensorsWorking() {
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
+}
+/*
+If this returns as false,
+blame YK for not making
+the rover perfect.
+*/
+bool roverWorking() {
 
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
+}
+/*
+Tests if the radio transmitter
+is working. If this doesn't work,
+the satellite will not communicate
+to the GROUND station. Worry not,
+this will blink a (Radio isn't working)
+light built somewhere in the satellite.
+*/
+bool radioWorking() {
+
+}
+/*
+  Tests by sending a packet
+  to the reciever over radio
+  if this fails, then it is
+  likely because the GROUND
+  station's radio is
+  unreachable.
+ */
+bool radioPacketTest() {
+
+}
